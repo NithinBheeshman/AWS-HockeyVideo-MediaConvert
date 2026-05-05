@@ -3,7 +3,7 @@
 ## Main project report
 
 ## Project summary
-<img src="../images/S3_Input.png" alt="Dashboard screenshot" width="600">
+<img src="./images/S3_Output.png" alt="Dashboard screenshot" width="600">
 This project was built to mimic a real FloSports-style media storage and transfer problem. In the actual workflow, large sports video assets are stored in Amazon S3 rather than sitting on a local machine. I recreated that pattern by uploading hockey game footage into S3, organizing it with input and output prefixes, and testing whether AWS could handle most of the heavy lifting before the files were moved to an external hard drive.
 
 The problem started with a very practical constraint. There were around 1,200 hockey games, and each game was roughly 10 GB. That puts the total source footage close to 12 TB.
