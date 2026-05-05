@@ -1,4 +1,43 @@
 
+### AWS CLI
+
+The AWS CLI was used to move files between S3 and the local machine or external hard drive.
+
+Example upload command:
+
+```bash
+aws s3 cp /path/to/game.mp4 s3://mediaconvert-hockey/input/game.mp4
+```
+
+Example download command:
+
+```bash
+aws s3 cp s3://mediaconvert-hockey/output/game-compressed.mp4 /Volumes/HDD/hockey/game-compressed.mp4
+```
+
+For the final no-compression approach, the direct command would be:
+
+```bash
+aws s3 cp s3://mediaconvert-hockey/input/ /Volumes/HDD/hockey-games/ --recursive
+```
+
+For a safer large transfer, I would use a dry run first:
+
+```bash
+aws s3 cp s3://mediaconvert-hockey/input/ /Volumes/HDD/hockey-games/ --recursive --dryrun
+```
+
+Then run the actual transfer:
+
+```bash
+aws s3 cp s3://mediaconvert-hockey/input/ /Volumes/HDD/hockey-games/ --recursive
+```
+
+For a resumable transfer, I would use sync:
+
+```bash
+aws s3 sync s3://mediaconvert-hockey/input/ /Volumes/HDD/hockey-games/
+```
 ## Commands used or recommended
 
 Upload one file to S3:
