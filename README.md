@@ -3,7 +3,6 @@
 ## Main project report
 
 ## Project summary
-<img src="./Images/S3_Output.png" alt="S3 output screenshot" width="600">
 
 This project was built to mimic a real FloSports-style media storage and transfer problem. In the actual workflow, large sports video assets are stored in Amazon S3 rather than sitting on a local machine. I recreated that pattern by uploading hockey game footage into S3, organizing it with input and output prefixes, and testing whether AWS could handle most of the heavy lifting before the files were moved to an external hard drive.
 
@@ -250,7 +249,7 @@ This was one of the main learning points of the project. MediaConvert did exactl
 
 <img src="./Images/MC_Input.png" alt="S3 output screenshot" width="600">
 
-<img src="./Images/MC_Output1.png" alt="S3 output screenshot" width="600">
+<img src="./Images/MC_Ouput1.png" alt="S3 output screenshot" width="600">
 
 <img src="./Images/MC_Final1.png" alt="S3 output screenshot" width="600">
 
