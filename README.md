@@ -16,7 +16,7 @@ The client-provided hard drive was only 6 TB. Downloading all 1,200 original gam
 
 The initial idea was to compress the videos first, then move the smaller versions to the hard drive. If each 10 GB game could be reduced to around 4.5 GB, then 1,200 games would fit much closer to the 6 TB drive capacity.
 
-```tex
+```text
 1,200 games × 4.5 GB compressed size = about 5.4 TB
 ```
 
@@ -24,11 +24,12 @@ That was the reason compression was considered. The goal was not just to make sm
 
 Instead, the proposed workflow was to use AWS for the expensive operational part of the process:
 
+```text
 Amazon S3 source footage
 → AWS Elemental MediaConvert compression
 → Amazon S3 compressed output
 → AWS CLI transfer directly to external HDD
-
+```
 
 This would mimic how FloSports-related media assets are stored in S3, keep the workflow cloud-centered, reduce dependency on local desktop storage, and only use the local machine as the place where the external hard drive is connected.
 
@@ -155,11 +156,7 @@ This confirmed that compression improved file size and download time. It also co
 
 The issue was cost. The MediaConvert charge was about $12 for one video, and the processing time was close to 2.45 hours. That made the compression workflow unsuitable for the full 1,200-game dataset.
 
-"Screenshot to include: terminal showing aws s3 cp upload command"
 
-"Screenshot to include: terminal showing aws s3 cp download command"
-
-"Screenshot to include: VLC playback of compressed HEVC output"
 
 ## AWS services and concepts used
 
@@ -297,9 +294,7 @@ The event pattern would look conceptually like this:
 
 This is the right monitoring pattern for long-running MediaConvert jobs. I would only describe it as implemented if the EventBridge rule and notification were actually created. Otherwise, it belongs in the report as a production extension or next version design.
 
-"Screenshot to include: EventBridge rule pattern for MediaConvert COMPLETE or ERROR events, if implemented"
 
-"Screenshot to include: SNS email subscription confirmation, if implemented"
 
 ### CloudWatch and billing monitoring
 
