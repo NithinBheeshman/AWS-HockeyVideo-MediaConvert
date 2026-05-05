@@ -47,11 +47,6 @@ The final recommendation was to avoid bulk compression and use direct S3-to-HDD 
 
 The main outcome of the project was not that compression became the final solution. The main outcome was that I tested an AWS-native media workflow, measured the real cost, and changed the architecture based on evidence.
 
-"Screenshot to include: S3 bucket showing input/ and output/ folders"
-
-"Screenshot to include: MediaConvert completed job details showing codec, output path, and job status"
-
-"Screenshot to include: AWS Billing or Cost Explorer showing MediaConvert charge"
 
 ## Problem I was trying to solve
 
@@ -185,6 +180,12 @@ The important S3 concepts in this project were:
 
 The biggest practical takeaway was that S3 storage cost was not the main issue because storage was already covered. The relevant cost was the transfer and the optional processing cost.
 
+
+<img src="./Images/S3.png" alt="S3 output screenshot" width="600">
+<img src="./Images/S3_Input.png" alt="S3 output screenshot" width="600">
+<img src="./Images/S3_Output.png" alt="S3 output screenshot" width="600">
+
+
 ### AWS CLI
 
 The AWS CLI was used to move files between S3 and the local machine or external hard drive.
@@ -246,6 +247,14 @@ What this project showed about MediaConvert:
 * A successful technical test can still be rejected if the cost model does not work
 
 This was one of the main learning points of the project. MediaConvert did exactly what it was supposed to do, but the pricing did not fit this particular transfer-and-archive problem.
+
+<img src="./Images/MC_Input.png" alt="S3 output screenshot" width="600">
+
+<img src="./Images/MC_Output1.png" alt="S3 output screenshot" width="600">
+
+<img src="./Images/MC_Final1.png" alt="S3 output screenshot" width="600">
+
+<img src="./Images/MC_Final2.png" alt="S3 output screenshot" width="600">
 
 ### IAM and service access
 
@@ -313,9 +322,11 @@ Alert at $20 forecasted spend
 
 This is not just a cost-saving feature. It is part of responsible cloud engineering.
 
-"Screenshot to include: AWS Budget alert configuration"
 
-"Screenshot to include: Cost Explorer filtered to Elemental MediaConvert"
+
+<img src="./Images/Budget_Alarm.png" alt="S3 output screenshot" width="600">
+<img src="./Images/Budget_Email.png" alt="S3 output screenshot" width="600">
+
 
 ## Cost analysis
 
@@ -545,35 +556,3 @@ That is the kind of decision-making that matters in real cloud engineering.
 
 
 
-
-
-## What screenshots to include
-
-Use screenshots where they prove something real happened. Avoid uploading videos, private data, account IDs, credentials, or internal company information.
-
-* "S3 bucket showing input/ and output/ prefixes"
-* "Uploaded 10 GB object inside the S3 input prefix"
-* "MediaConvert job settings showing HEVC/H.265, MP4, and AAC"
-* "MediaConvert job status showing COMPLETE"
-* "S3 output prefix showing the compressed 4.5 GB file"
-* "VLC playback of the compressed output"
-* "AWS Billing or Cost Explorer showing the MediaConvert charge"
-* "Terminal showing AWS CLI upload or download command"
-* "AWS Budget alert configuration, if created"
-* "EventBridge rule for MediaConvert job state change, if created"
-
-
-Recommended references:
-
-* AWS Elemental MediaConvert pricing
-* AWS Elemental MediaConvert user guide
-* AWS MediaConvert EventBridge events
-* AWS MediaConvert job status change events
-* AWS MediaConvert queues and parallel job processing
-* AWS VOD automation watchfolder pattern using S3, Lambda, MediaConvert, CloudWatch Events, and SNS
-* Amazon S3 pricing
-* AWS CLI `s3 cp` command reference
-* AWS CLI `s3 sync` command reference
-* AWS Budgets notification documentation
-* GitHub documentation for adding locally hosted projects using Git
-* GitHub Markdown formatting documentation
